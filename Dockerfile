@@ -20,6 +20,8 @@ RUN poetry config virtualenvs.create false
 # Copy dependency configuration
 COPY pyproject.toml poetry.lock* /app/
 
+RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu --no-cache-dir
+
 # Install dependencies including dev dependencies (needed for evaluation and tools)
 RUN poetry install --no-interaction --no-ansi --no-root
 
