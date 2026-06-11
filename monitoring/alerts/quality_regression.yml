@@ -1,0 +1,11 @@
+groups:
+  - name: RAGQualityAlerts
+    rules:
+      - alert: HighCitationViolations
+        expr: sum(rate(rag_citation_violations_total[5m])) / sum(rate(rag_requests_total[5m])) > 0.05
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High RAG citation violations detected"
+          description: "Over 5% of responses have failed citation validation rules in the last 5 minutes."

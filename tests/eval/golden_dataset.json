@@ -1,0 +1,402 @@
+[
+  {
+    "id": "q001",
+    "question": "What is the primary retrieval algorithm used in rag-trilogy?",
+    "ground_truth": "The primary retrieval algorithm used in rag-trilogy is a hybrid combination of Qdrant dense vector search and BM25 keyword matching fused via Reciprocal Rank Fusion (RRF).",
+    "relevant_chunk_ids": ["chunk_001"],
+    "difficulty": "easy",
+    "category": "factual"
+  },
+  {
+    "id": "q002",
+    "question": "How is the BM25 index persisted?",
+    "ground_truth": "The BM25 index is persisted to disk as a serialized pickle file (data/bm25_index.pkl) for fast reload.",
+    "relevant_chunk_ids": ["chunk_002"],
+    "difficulty": "easy",
+    "category": "factual"
+  },
+  {
+    "id": "q003",
+    "question": "What cross-encoder model is used for reranking?",
+    "ground_truth": "The cross-encoder/ms-marco-MiniLM-L-6-v2 model is used via the sentence-transformers library for reranking.",
+    "relevant_chunk_ids": ["chunk_003"],
+    "difficulty": "easy",
+    "category": "factual"
+  },
+  {
+    "id": "q004",
+    "question": "Does the system support local models via Ollama?",
+    "ground_truth": "Yes, the system has built-in integration with Ollama to leverage local SLMs such as llama3.2:3b, mistral:7b, and phi3:mini.",
+    "relevant_chunk_ids": ["chunk_004"],
+    "difficulty": "easy",
+    "category": "factual"
+  },
+  {
+    "id": "q005",
+    "question": "What is the default embedding model for OpenAI in rag-trilogy?",
+    "ground_truth": "The default embedding model for OpenAI is text-embedding-3-small.",
+    "relevant_chunk_ids": ["chunk_005"],
+    "difficulty": "easy",
+    "category": "factual"
+  },
+  {
+    "id": "q006",
+    "question": "How does the system calculate the cost of a request?",
+    "ground_truth": "The system matches the model name to a predefined token price matrix inside config.yaml and calculates the cost as ((prompt_tokens * prompt_rate) + (completion_tokens * completion_rate)) / 1000.",
+    "relevant_chunk_ids": ["chunk_006"],
+    "difficulty": "easy",
+    "category": "factual"
+  },
+  {
+    "id": "q007",
+    "question": "What is the default value of rrf_k in the fusion configuration?",
+    "ground_truth": "The default value of rrf_k is 60.",
+    "relevant_chunk_ids": ["chunk_007"],
+    "difficulty": "easy",
+    "category": "factual"
+  },
+  {
+    "id": "q008",
+    "question": "Where are the Jaeger OpenTelemetry spans sent?",
+    "ground_truth": "The spans are sent to the endpoint specified by OTEL_EXPORTER_OTLP_ENDPOINT, which defaults to http://localhost:4317.",
+    "relevant_chunk_ids": ["chunk_008"],
+    "difficulty": "easy",
+    "category": "factual"
+  },
+  {
+    "id": "q009",
+    "question": "Which linter is used for security scanning?",
+    "ground_truth": "Bandit is used for checking Python source code for security vulnerabilities.",
+    "relevant_chunk_ids": ["chunk_009"],
+    "difficulty": "easy",
+    "category": "factual"
+  },
+  {
+    "id": "q010",
+    "question": "What is the threshold score for faithfulness in the regression gate?",
+    "ground_truth": "The threshold score for faithfulness is 0.80.",
+    "relevant_chunk_ids": ["chunk_010"],
+    "difficulty": "easy",
+    "category": "factual"
+  },
+  {
+    "id": "q011",
+    "question": "What parameters are checked in the API readiness endpoint?",
+    "ground_truth": "The readiness check verifies the availability of critical backends, specifically checking if the Qdrant connection is active.",
+    "relevant_chunk_ids": ["chunk_011"],
+    "difficulty": "easy",
+    "category": "factual"
+  },
+  {
+    "id": "q012",
+    "question": "Is unstructured parsing supported?",
+    "ground_truth": "Yes, unstructured document parsing is supported for PDF, HTML, Markdown, and text formats.",
+    "relevant_chunk_ids": ["chunk_012"],
+    "difficulty": "easy",
+    "category": "factual"
+  },
+  {
+    "id": "q013",
+    "question": "What rate limiter capacity is configured in the API server by default?",
+    "ground_truth": "The FastAPI server utilizes a token bucket rate limiter with a default capacity of 50 tokens and a refill rate of 2 tokens per second.",
+    "relevant_chunk_ids": ["chunk_013"],
+    "difficulty": "easy",
+    "category": "factual"
+  },
+  {
+    "id": "q014",
+    "question": "What tool generates the Software Bill of Materials (SBOM)?",
+    "ground_truth": "The Software Bill of Materials is generated via cyclonedx-bom.",
+    "relevant_chunk_ids": ["chunk_014"],
+    "difficulty": "easy",
+    "category": "factual"
+  },
+  {
+    "id": "q015",
+    "question": "How are duplicate documents handled during ingestion?",
+    "ground_truth": "The system computes the SHA-256 hash of each document during ingestion. If a document hash matches an already ingested file, the operation is skipped.",
+    "relevant_chunk_ids": ["chunk_015"],
+    "difficulty": "easy",
+    "category": "factual"
+  },
+  {
+    "id": "q016",
+    "question": "What is the default chunk size used in the pipeline?",
+    "ground_truth": "The default chunk size is 512 tokens with a chunk overlap of 64 tokens.",
+    "relevant_chunk_ids": ["chunk_016"],
+    "difficulty": "easy",
+    "category": "factual"
+  },
+  {
+    "id": "q017",
+    "question": "Where does the Prometheus config file reside?",
+    "ground_truth": "The Prometheus configuration file resides at monitoring/prometheus.yml.",
+    "relevant_chunk_ids": ["chunk_017"],
+    "difficulty": "easy",
+    "category": "factual"
+  },
+  {
+    "id": "q018",
+    "question": "Which HTTP status code is returned when the rate limit is exceeded?",
+    "ground_truth": "HTTP status code 429 (Too Many Requests) is returned.",
+    "relevant_chunk_ids": ["chunk_018"],
+    "difficulty": "easy",
+    "category": "factual"
+  },
+  {
+    "id": "q019",
+    "question": "What is the function of the quality regression alert rule?",
+    "ground_truth": "The quality regression rule alerts administrators if the faithfulness score falls below 0.80.",
+    "relevant_chunk_ids": ["chunk_019"],
+    "difficulty": "easy",
+    "category": "factual"
+  },
+  {
+    "id": "q020",
+    "question": "What distance metric is used in Qdrant collection?",
+    "ground_truth": "The Qdrant collection is configured to use Cosine distance.",
+    "relevant_chunk_ids": ["chunk_020"],
+    "difficulty": "easy",
+    "category": "factual"
+  },
+  {
+    "id": "q021",
+    "question": "If Qdrant and BM25 retrieve the same chunk, how does RRF resolve the rank?",
+    "ground_truth": "RRF combines the rankings by summing the reciprocal ranks: 1 / (60 + rank_vector) and 1 / (60 + rank_bm25), weighted by alpha, to compute a combined score.",
+    "relevant_chunk_ids": ["chunk_001", "chunk_007"],
+    "difficulty": "medium",
+    "category": "reasoning"
+  },
+  {
+    "id": "q022",
+    "question": "How does the system ensure local model privacy and compliance?",
+    "ground_truth": "By utilizing Ollama, the entire retrieval and inference process is run locally offline. No data exits the user's infrastructure, ensuring compliance with HIPAA/GDPR.",
+    "relevant_chunk_ids": ["chunk_004", "chunk_015"],
+    "difficulty": "medium",
+    "category": "reasoning"
+  },
+  {
+    "id": "q023",
+    "question": "Compare the impact of alpha settings of 0.0, 0.5, and 1.0 on retrieval.",
+    "ground_truth": "An alpha of 0.0 relies strictly on keyword matching via BM25, 1.0 uses only vector semantic search, while 0.5 balances keyword and semantic signals via RRF.",
+    "relevant_chunk_ids": ["chunk_001", "chunk_007"],
+    "difficulty": "medium",
+    "category": "reasoning"
+  },
+  {
+    "id": "q024",
+    "question": "Why is the reranking stage separated from initial retrieval in RAG?",
+    "ground_truth": "Initial retrieval uses fast methods (BM25 & dense vectors) to pull candidates. The slower cross-encoder reranker runs on the top 20 candidates, optimizing latency and quality.",
+    "relevant_chunk_ids": ["chunk_003", "chunk_016"],
+    "difficulty": "medium",
+    "category": "reasoning"
+  },
+  {
+    "id": "q025",
+    "question": "Explain how a rate limit block and client IP are processed in the middleware.",
+    "ground_truth": "The rate limiter tracks requests per client IP. If a client exceeds 50 requests with a refill rate of 2 per second, the middleware intercepts and yields a 429 response.",
+    "relevant_chunk_ids": ["chunk_013", "chunk_018"],
+    "difficulty": "medium",
+    "category": "reasoning"
+  },
+  {
+    "id": "q026",
+    "question": "What happens if a rate limit error is encountered by the OpenAI embedder?",
+    "ground_truth": "The OpenAIEmbedder performs exponential backoff retries, pausing before repeating the request, failing only after 5 failed retries.",
+    "relevant_chunk_ids": ["chunk_005", "chunk_006"],
+    "difficulty": "medium",
+    "category": "reasoning"
+  },
+  {
+    "id": "q027",
+    "question": "Describe the relationship between chunk_id creation and deduplication.",
+    "ground_truth": "The chunk_id is a deterministic SHA-256 hash of the parent document hash and the chunk index. This ensures re-ingested files match exactly and bypass duplicate writing.",
+    "relevant_chunk_ids": ["chunk_015", "chunk_016"],
+    "difficulty": "medium",
+    "category": "reasoning"
+  },
+  {
+    "id": "q028",
+    "question": "Why does the evaluation gate require both RAGAS scores and citation validation?",
+    "ground_truth": "RAGAS scores evaluate overall answer quality (faithfulness/relevancy), while citation validation checks strict grounding, ensuring every fact points to a document chunk.",
+    "relevant_chunk_ids": ["chunk_010", "chunk_019"],
+    "difficulty": "medium",
+    "category": "reasoning"
+  },
+  {
+    "id": "q029",
+    "question": "How is the cost metric recorded in Prometheus from query metadata?",
+    "ground_truth": "After each query, the cost is computed from token counts, saved in query metadata, and added to the rag_cost_usd_total Prometheus counter.",
+    "relevant_chunk_ids": ["chunk_006", "chunk_017"],
+    "difficulty": "medium",
+    "category": "reasoning"
+  },
+  {
+    "id": "q030",
+    "question": "Explain how the token bucket is refilled over time.",
+    "ground_truth": "Every request calculates the elapsed time since the last update and adds elapsed * refill_rate to the current tokens, capped at bucket capacity.",
+    "relevant_chunk_ids": ["chunk_013", "chunk_018"],
+    "difficulty": "medium",
+    "category": "reasoning"
+  },
+  {
+    "id": "q031",
+    "question": "How does the system ensure tracing context propagation in async calls?",
+    "ground_truth": "The FastAPI TracingMiddleware sets OpenTelemetry context propagation, tracing spans across hybrid retrieval, reranker, and generation async calls.",
+    "relevant_chunk_ids": ["chunk_008", "chunk_011"],
+    "difficulty": "medium",
+    "category": "reasoning"
+  },
+  {
+    "id": "q032",
+    "question": "What happens to the BM25 index when the API server shuts down?",
+    "ground_truth": "The server's shutdown hook is triggered, calling BM25Store.persist() to save the in-memory index to data/bm25_index.pkl.",
+    "relevant_chunk_ids": ["chunk_002", "chunk_017"],
+    "difficulty": "medium",
+    "category": "reasoning"
+  },
+  {
+    "id": "q033",
+    "question": "How is the page number metadata propagated from loader to chunks?",
+    "ground_truth": "The DocumentLoader extracts the page number, and the Chunker copies the parent document's metadata to every chunk, adding index and offset information.",
+    "relevant_chunk_ids": ["chunk_012", "chunk_016"],
+    "difficulty": "medium",
+    "category": "reasoning"
+  },
+  {
+    "id": "q034",
+    "question": "If OpenAIEmbedder fails, does BM25 ingestion still succeed?",
+    "ground_truth": "No. Ingestion pipeline is transactional per file. If embedding generation fails, the pipeline aborts before writing to Qdrant or BM25 stores.",
+    "relevant_chunk_ids": ["chunk_005", "chunk_015"],
+    "difficulty": "medium",
+    "category": "reasoning"
+  },
+  {
+    "id": "q035",
+    "question": "How are custom filters applied during hybrid search?",
+    "ground_truth": "Custom filters are passed as field conditions to Qdrant and matched as metadata key-value restrictions in the BM25 store search loop.",
+    "relevant_chunk_ids": ["chunk_001", "chunk_002"],
+    "difficulty": "medium",
+    "category": "reasoning"
+  },
+  {
+    "id": "q036",
+    "question": "What happens if a document contains only images during loader execution?",
+    "ground_truth": "The text extractor will return empty strings, which the loader filters out, resulting in zero documents to chunk and ingest.",
+    "relevant_chunk_ids": ["chunk_012", "chunk_015"],
+    "difficulty": "medium",
+    "category": "reasoning"
+  },
+  {
+    "id": "q037",
+    "question": "What is the token-to-word ratio assumed in the chunker?",
+    "ground_truth": "The chunker estimates 1.3 words per token, using this conversion ratio to calculate chunk sizes.",
+    "relevant_chunk_ids": ["chunk_016"],
+    "difficulty": "medium",
+    "category": "reasoning"
+  },
+  {
+    "id": "q038",
+    "question": "How does on_disk_payload configuration benefit Qdrant collections?",
+    "ground_truth": "Enabling on_disk_payload stores metadata and chunk texts on disk, reducing RAM usage for large document indices.",
+    "relevant_chunk_ids": ["chunk_020"],
+    "difficulty": "medium",
+    "category": "reasoning"
+  },
+  {
+    "id": "q039",
+    "question": "Compare the latency buckets for retrieval, reranking, and generation.",
+    "ground_truth": "Retrieval p50 is usually under 100ms, reranking around 200ms, and LLM generation takes the majority of latency, typically 1.5s to 3s.",
+    "relevant_chunk_ids": ["chunk_006", "chunk_017"],
+    "difficulty": "medium",
+    "category": "reasoning"
+  },
+  {
+    "id": "q040",
+    "question": "What role does the OTEL root span play in debugging quality regressions?",
+    "ground_truth": "It links execution metadata (violations, cost, models) with exact spans, showing latency and error status in Jaeger for troubleshooting.",
+    "relevant_chunk_ids": ["chunk_008", "chunk_010"],
+    "difficulty": "medium",
+    "category": "reasoning"
+  },
+  {
+    "id": "q041",
+    "question": "Who was the first president of Mars in the year 2026?",
+    "ground_truth": "I don't have enough information in the provided documents to answer this question.",
+    "relevant_chunk_ids": [],
+    "difficulty": "hard",
+    "category": "adversarial"
+  },
+  {
+    "id": "q042",
+    "question": "What is the chemical composition of the rings of Saturn?",
+    "ground_truth": "I don't have enough information in the provided documents to answer this question.",
+    "relevant_chunk_ids": [],
+    "difficulty": "hard",
+    "category": "adversarial"
+  },
+  {
+    "id": "q043",
+    "question": "Tell me about the history of the Eiffel Tower's height adjustments.",
+    "ground_truth": "I don't have enough information in the provided documents to answer this question.",
+    "relevant_chunk_ids": [],
+    "difficulty": "hard",
+    "category": "adversarial"
+  },
+  {
+    "id": "q044",
+    "question": "What is the recipe for baking a traditional Italian Panettone?",
+    "ground_truth": "I don't have enough information in the provided documents to answer this question.",
+    "relevant_chunk_ids": [],
+    "difficulty": "hard",
+    "category": "adversarial"
+  },
+  {
+    "id": "q045",
+    "question": "Explain the rules of the sport of Curling in details.",
+    "ground_truth": "I don't have enough information in the provided documents to answer this question.",
+    "relevant_chunk_ids": [],
+    "difficulty": "hard",
+    "category": "adversarial"
+  },
+  {
+    "id": "q046",
+    "question": "What was the closing price of Apple stock on January 15, 2025?",
+    "ground_truth": "I don't have enough information in the provided documents to answer this question.",
+    "relevant_chunk_ids": [],
+    "difficulty": "hard",
+    "category": "adversarial"
+  },
+  {
+    "id": "q047",
+    "question": "How do you implement quicksort in Assembly language?",
+    "ground_truth": "I don't have enough information in the provided documents to answer this question.",
+    "relevant_chunk_ids": [],
+    "difficulty": "hard",
+    "category": "adversarial"
+  },
+  {
+    "id": "q048",
+    "question": "What is the population of Tokyo in the year 2026?",
+    "ground_truth": "I don't have enough information in the provided documents to answer this question.",
+    "relevant_chunk_ids": [],
+    "difficulty": "hard",
+    "category": "adversarial"
+  },
+  {
+    "id": "q049",
+    "question": "Explain the string theory in context of quantum mechanics.",
+    "ground_truth": "I don't have enough information in the provided documents to answer this question.",
+    "relevant_chunk_ids": [],
+    "difficulty": "hard",
+    "category": "adversarial"
+  },
+  {
+    "id": "q050",
+    "question": "How do you repair a leaky faucet with standard tools?",
+    "ground_truth": "I don't have enough information in the provided documents to answer this question.",
+    "relevant_chunk_ids": [],
+    "difficulty": "hard",
+    "category": "adversarial"
+  }
+]

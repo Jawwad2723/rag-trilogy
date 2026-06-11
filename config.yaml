@@ -1,0 +1,51 @@
+# config.yaml
+app:
+  name: "ask-my-docs"
+  version: "1.0.0"
+  log_level: "INFO"
+
+retrieval:
+  vector_store:
+    provider: "qdrant"           # qdrant | chroma | pgvector
+    url: "${QDRANT_URL}"
+    collection_name: "documents"
+  embedding:
+    provider: "openai"           # openai | local
+    model: "text-embedding-3-small"
+    dimensions: 1536
+  hybrid:
+    alpha: 0.5                   # 0=BM25 only, 1=vector only
+    rrf_k: 60
+    top_k: 20                    # candidates before reranking
+  reranker:
+    enabled: true
+    model: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+    top_n: 5                     # final results after reranking
+
+generation:
+  default_provider: "openai"     # openai | anthropic | ollama
+  default_model: "gpt-4o-mini"
+  max_tokens: 1024
+  temperature: 0.1               # low temp for factual RAG
+  ollama:
+    base_url: "${OLLAMA_BASE_URL}"
+    default_model: "llama3.2:3b"
+
+monitoring:
+  otel_endpoint: "${OTEL_EXPORTER_OTLP_ENDPOINT}"
+  prometheus_port: 9090
+  cost_per_1k_tokens:
+    "gpt-4o-mini": {"prompt": 0.00015, "completion": 0.0006}
+    "gpt-4o": {"prompt": 0.005, "completion": 0.015}
+    "claude-3-haiku-20240307": {"prompt": 0.00025, "completion": 0.00125}
+    "ollama/*": {"prompt": 0.0, "completion": 0.0}
+
+evaluation:
+  ragas_metrics:
+    - faithfulness
+    - answer_relevancy
+    - context_precision
+  thresholds:
+    faithfulness: 0.80
+    answer_relevancy: 0.75
+    context_precision: 0.70

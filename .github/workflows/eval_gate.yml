@@ -1,0 +1,47 @@
+name: RAG Quality Evaluation Gate
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'      # Every Monday 6am UTC
+  workflow_dispatch:         # Manual trigger
+  push:
+    paths:
+      - 'src/retrieval/**'
+      - 'src/generation/**'
+
+jobs:
+  eval-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+          export PATH="$HOME/.local/bin:$PATH"
+
+      - name: Configure Poetry
+        run: poetry config virtualenvs.create false
+
+      - name: Install Dependencies
+        run: poetry install --no-interaction --no-ansi
+
+      - name: Run RAGAS Evaluation Suite
+        run: poetry run python scripts/run_eval.py --output eval_results.json
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+      - name: Quality Regression Gate
+        run: poetry run python -c "from src.evaluation.regression_gate import gate_from_file; gate_from_file('eval_results.json')"
+
+      - name: Upload Evaluation Results Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-results
+          path: eval_results.json

@@ -1,0 +1,11 @@
+apiVersion: 1
+
+providers:
+  - name: 'RAG Trilogy Dashboards'
+    orgId: 1
+    folder: 'RAG trilogy'
+    type: file
+    disableDeletion: false
+    editable: true
+    options:
+      path: /etc/grafana/provisioning/dashboards/dashboards
